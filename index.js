@@ -10,6 +10,7 @@ function MigrationTask(connection, opts){
   opts                  = (opts || {})
   this.connection       = connection;
   this.dir              = (opts.dir || 'migrations');
+  this.tableName        = (opts.tableName || 'orm_migrations');
   this.coffee           = (opts.coffee || false);
   this.migrate          = migrationDsl(connection, this);
   this.resumptionPoint  = 0;

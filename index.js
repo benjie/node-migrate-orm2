@@ -118,7 +118,7 @@ MigrationTask.prototype.performMigration = function(direction, migrationName, cb
 
   var self = this;
   this.migrations().forEach(function(path){
-    var mod = require(process.cwd() + '/' + path);
+    var mod = require(path.charAt(0) === '/' ? path : process.cwd() + '/' + path);
     self.migrate(path, mod.up, mod.down);
   });
 
